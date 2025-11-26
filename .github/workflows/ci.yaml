@@ -37,8 +37,8 @@ jobs:
         - name: Run GolangCI-Lint
           uses: golangci/golangci-lint-action@v6
           with:
-                version: v1.56.0
-                install-mode: go
+                version: v1.56.2
+                
 
 
     docker-build:
