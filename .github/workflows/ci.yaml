@@ -34,12 +34,16 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Run GolangCI-Lint
-          uses: golangci/golangci-lint-action@v6
-          with:
-                version: v1.56.2
-                
+        - name: Install golangci-lint from source
+          run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+        - name: Run golangci-lint
+          run: golangci-lint run
+  
 
+        #- name: Run GolangCI-Lint
+        #  uses: golangci/golangci-lint-action@v6
+        #  with:
+        #        version: v1.56.2
 
     docker-build:
         runs-on: ubuntu-latest
