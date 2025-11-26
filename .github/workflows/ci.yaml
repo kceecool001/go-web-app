@@ -16,10 +16,10 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Set up Go 1.21
+        - name: Set up Go 1.22
           uses: actions/setup-go@v5
           with:
-            go-version: 1.21
+            go-version: 1.22
 
         - name: Build
           run: go build -o go-web-app
@@ -37,7 +37,7 @@ jobs:
         - name: Run GolangCI-Lint
           uses: golangci/golangci-lint-action@v6
           with:
-                version: v1.59.1
+                version: v1.60.1
                 install-mode: go
 
 
@@ -65,7 +65,7 @@ jobs:
             context: .
             file: ./Dockerfile
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/go-web-app:{{ github.run_id }}
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/go-web-app:${{ github.run_id }}
     
     update-newtag-in-helm-chart:
         runs-on: ubuntu-latest
